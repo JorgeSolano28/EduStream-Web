@@ -5,20 +5,29 @@
 <head>
     <meta charset="UTF-8">
     <title>EduStream - Actualizar Usuario</title>
+    
+    <%-- Parte de CSS para que se vea decente y no todo regado y sin color--%>
     <style>
-        body { font-family: Arial, sans-serif; 
-               background: #f0f0f0; padding: 30px; }
+        body { font-family: Arial; 
+               background: #212529; 
+               padding: 30px; }
         
-        .card { background: white; padding: 30px; 
+        .card { background: #343a40; 
+                padding: 30px; 
                 border-radius: 12px; 
                 max-width: 500px; 
                 margin: auto; }
         
-        h2, h3 { 
-            color: #333; }
+        h2 { 
+            color: white; 
+            text-align: center; }        
+        
+        h3 { 
+            color: white; }
         
         label { display: block; 
-                margin-top: 12px; 
+                margin-top: 12px;
+                color: white;
                 font-weight: bold; }
         
         input, select { width: 100%; 
@@ -38,13 +47,14 @@
               font-size: 14px; 
               text-decoration: none; }
         
-        .btn-buscar { background: #2196F3; }
+        .btn-buscar { background: #1864ab; }
         
-        .btn-guardar { background: #FF9800; }
+        .btn-guardar { background: #2b8a3e; }
         
-        .btn-volver { background: #9E9E9E; }
+        .btn-volver { background: #d9480f; }
         
-        .seccion { border: 1px solid #ddd; 
+        .seccion { border: 1px solid #ddd;
+                  color: white;
                   border-radius: 8px;
                   padding: 16px; 
                   margin-top: 16px; }
@@ -52,6 +62,8 @@
         hr { margin: 20px 0; }
     </style>
 </head>
+
+<%-- Parte del cuerpo del jsp a mostrar al usuario final--%>
 <body>
     <div class="card">
         <h2>Actualizar Usuario</h2>
@@ -60,7 +72,7 @@
         <form action="usuarios" method="GET">
             <input type="hidden" name="accion" value="actualizar"/>
             <label>ID del usuario a actualizar:</label>
-            <input type="number" name="id" placeholder="Digite el ID" required/>
+            <input type="number" name="id" placeholder="Digite el ID del usuario a modificar" required/>
             <button type="submit" class="btn btn-buscar">Buscar</button>
         </form>
 
@@ -71,7 +83,7 @@
             <hr/>
             <h3>Usuario encontrado: <%= u.getNombre() %></h3>
 
-            <%-- Actualización general --%>
+            <%-- Actualización general de un usuario (los 4 campos) --%>
             <div class="seccion">
                 <strong>Actualización general</strong>
                 <form action="usuarios" method="POST">
@@ -92,7 +104,9 @@
                 </form>
             </div>
 
-            <%-- Actualización individual --%>
+            <%-- Secciones para actualización individual según lo que se requiera--%>
+            
+            <%-- Actualización de nombre de usuario--%>
             <div class="seccion">
                 <strong>Actualizar solo el nombre</strong>
                 <form action="usuarios" method="POST">
@@ -103,6 +117,7 @@
                 </form>
             </div>
 
+            <%-- Actualización de email de usuario--%>        
             <div class="seccion">
                 <strong>Actualizar solo el email</strong>
                 <form action="usuarios" method="POST">
@@ -113,6 +128,7 @@
                 </form>
             </div>
 
+            <%-- Actualización de contraseña de usuario--%>        
             <div class="seccion">
                 <strong>Actualizar solo el password</strong>
                 <form action="usuarios" method="POST">
@@ -122,7 +138,8 @@
                     <button type="submit" class="btn btn-guardar">Actualizar Password</button>
                 </form>
             </div>
-
+                    
+            <%-- Actualización de rol de usuario--%>                    
             <div class="seccion">
                 <strong>Actualizar solo el rol</strong>
                 <form action="usuarios" method="POST">
@@ -135,7 +152,8 @@
                     <button type="submit" class="btn btn-guardar">Actualizar Rol</button>
                 </form>
             </div>
-
+                    
+        <%-- Manejo de error para cuando se ingrese un id inexistente--%>                    
         <%
             } else if (request.getParameter("id") != null) {
         %>
@@ -145,7 +163,7 @@
         %>
 
         <br/>
-        <a href="usuarios" class="btn btn-volver">Volver al Menú</a>
+        <a href="usuarios" class="btn btn-volver">Volver al Menú principal</a>
     </div>
 </body>
 </html>

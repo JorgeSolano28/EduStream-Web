@@ -6,6 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <title>EduStream - Consultar Usuarios</title>
+    
+    <%-- Parte de CSS para que se vea decente y no todo regado y sin color--%>
     <style>
         body { font-family: Arial; 
                background: #212529; 
@@ -62,6 +64,8 @@
             background: #f2f2f2; }
     </style>
 </head>
+
+<%-- Parte del cuerpo del jsp a mostrar al usuario final--%>
 <body>
     <div class="card">
         <h2>Consultar Usuarios</h2>

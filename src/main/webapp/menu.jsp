@@ -72,6 +72,20 @@
         <a href="usuarios?accion=consultar"  class="btn btn-consultar">Consultar Usuarios</a>
         <a href="usuarios?accion=actualizar" class="btn btn-actualizar">Actualizar Usuario</a>
         <a href="usuarios?accion=eliminar"   class="btn btn-eliminar" >Eliminar Usuario</a>
+        
+        <hr style="margin: 24px 0; border: none; border-top: 1px solid #ddd;"/>
+
+        <a href="https://github.com/JorgeSolano28/EduStream-Web" 
+           target="_blank" 
+           style="color: #2196F3; font-size: 13px; text-decoration: none;">
+            Ver repositorio en GitHub
+        </a>
+
+        <p style="margin-top: 16px; font-size: 12px; color: #999;">
+            Creado por Jorge Solano &amp; Luis Abarca
+        </p>
+
+    </div>
     </div>
 </body>
 </html>
