@@ -198,8 +198,7 @@ public class UsuarioDAO {
         }
           
     }
-    
-    
+
     //para buscar usuario que solo sea ESTUDIANTE
     public void buscarEstudiante() {
         String query = "SELECT * FROM usuarios WHERE rol = 'ESTUDIANTE'";
@@ -226,6 +225,35 @@ public class UsuarioDAO {
             e.printStackTrace();
         }
     }
+    
+    
+        //para buscar usuario que solo sea ESTUDIANTE
+    public void buscarProfesor() {
+        String query = "SELECT * FROM usuarios WHERE rol = 'PROFESOR'";
+
+        try (Connection conn = Conexion.getConexion(); 
+                PreparedStatement ps = conn.prepareStatement(query); 
+                ResultSet rs = ps.executeQuery()){
+
+            while (rs.next()) {
+                int id = rs.getInt("id_usuario");
+                String nombre = rs.getString("nombre");
+                String email = rs.getString("email");
+                String rol = rs.getString("rol");
+
+                System.out.println("Id de Usuario: " + id);
+                System.out.println("Nombre: " + nombre);
+                System.out.println("Email: " + email);
+                System.out.println("Rol: " + rol);
+                System.out.println();
+            }
+
+        } catch (SQLException e) {
+            System.out.println("ERROR al leer usuarios");
+            e.printStackTrace();
+        }
+    }
+    
     
     //==============================================================================
     //Métdos para la parte web directamente
@@ -270,5 +298,82 @@ public class UsuarioDAO {
 
     return lista;
     }
+    
+    
+    public List<Usuario> listarPorRol(String rol) {
+    List<Usuario> lista = new ArrayList<>();
+    String query = "SELECT * FROM usuarios WHERE rol = ?";
+
+    try (Connection conn = Conexion.getConexion();
+         PreparedStatement ps = conn.prepareStatement(query)) {
+
+        ps.setString(1, rol);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            Usuario u;
+            if (rol.equals("PROFESOR")) {
+                u = new Profesor(
+                    rs.getInt("id_usuario"),
+                    rs.getString("nombre"),
+                    rs.getString("email"),
+                    rs.getString("password"),
+                    rs.getTimestamp("fecha_registro").toLocalDateTime().toLocalDate()
+                );
+            } else {
+                u = new Estudiante(
+                    rs.getInt("id_usuario"),
+                    rs.getString("nombre"),
+                    rs.getString("email"),
+                    rs.getString("password"),
+                    rs.getTimestamp("fecha_registro").toLocalDateTime().toLocalDate()
+                );
+            }
+            lista.add(u);
+        }
+
+    } catch (SQLException e) {
+        System.out.println("ERROR al listar por rol");
+        e.printStackTrace();
+    }
+    return lista;
+}
+
+public Usuario buscarUsuarioPorId(int id) {
+    String query = "SELECT * FROM usuarios WHERE id_usuario = ?";
+
+    try (Connection conn = Conexion.getConexion();
+         PreparedStatement ps = conn.prepareStatement(query)) {
+
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            String rol = rs.getString("rol");
+            if (rol.equals("PROFESOR")) {
+                return new Profesor(
+                    rs.getInt("id_usuario"),
+                    rs.getString("nombre"),
+                    rs.getString("email"),
+                    rs.getString("password"),
+                    rs.getTimestamp("fecha_registro").toLocalDateTime().toLocalDate()
+                );
+            } else {
+                return new Estudiante(
+                    rs.getInt("id_usuario"),
+                    rs.getString("nombre"),
+                    rs.getString("email"),
+                    rs.getString("password"),
+                    rs.getTimestamp("fecha_registro").toLocalDateTime().toLocalDate()
+                );
+            }
+        }
+
+    } catch (SQLException e) {
+        System.out.println("ERROR al buscar usuario por ID");
+        e.printStackTrace();
+    }
+    return null;
+}
     
 }
