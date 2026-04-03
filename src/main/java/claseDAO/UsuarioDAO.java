@@ -2,7 +2,12 @@
 package claseDAO;
 import java.sql.*;
 import claseConexion.Conexion;
+import clasePOJOS.Estudiante;
+import clasePOJOS.Profesor;
 import clasePOJOS.Rol;
+import clasePOJOS.Usuario;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UsuarioDAO {
     
@@ -19,10 +24,10 @@ public class UsuarioDAO {
             ps.setString(4, rol.name()); // "ESTUDIANTE" o "PROFESOR"*************
 
             ps.executeUpdate();
-            System.out.println("Dato insertado correctamente");
+            System.out.println("Nuevo usuario insertado correctamente");
 
         } catch (SQLException e) {
-            System.out.println("ERROR al insertar dato");
+            System.out.println("ERROR al insertar nuevo usuario");
             e.printStackTrace();
         }
     }
@@ -49,7 +54,7 @@ public class UsuarioDAO {
             }
 
         } catch (SQLException e) {
-            System.out.println("ERROR al leer datos");
+            System.out.println("ERROR al leer usuarios");
             e.printStackTrace();
         }
     }
@@ -191,6 +196,79 @@ public class UsuarioDAO {
             e.printStackTrace();
             return false;
         }
+          
     }
-      
+    
+    
+    //para buscar usuario que solo sea ESTUDIANTE
+    public void buscarEstudiante() {
+        String query = "SELECT * FROM usuarios WHERE rol = 'ESTUDIANTE'";
+
+        try (Connection conn = Conexion.getConexion(); 
+                PreparedStatement ps = conn.prepareStatement(query); 
+                ResultSet rs = ps.executeQuery()){
+
+            while (rs.next()) {
+                int id = rs.getInt("id_usuario");
+                String nombre = rs.getString("nombre");
+                String email = rs.getString("email");
+                String rol = rs.getString("rol");
+
+                System.out.println("Id de Usuario: " + id);
+                System.out.println("Nombre: " + nombre);
+                System.out.println("Email: " + email);
+                System.out.println("Rol: " + rol);
+                System.out.println();
+            }
+
+        } catch (SQLException e) {
+            System.out.println("ERROR al leer usuarios");
+            e.printStackTrace();
+        }
+    }
+    
+    //==============================================================================
+    //Métdos para la parte web directamente
+    //==============================================================================
+    
+    public List<Usuario> listarUsuarios() {
+    List<Usuario> lista = new ArrayList<>();
+    String query = "SELECT * FROM usuarios";
+
+    try (Connection conn = Conexion.getConexion();
+         PreparedStatement ps = conn.prepareStatement(query);
+         ResultSet rs = ps.executeQuery()) {
+
+        while (rs.next()) {
+            String rol = rs.getString("rol");
+            Usuario u;
+
+            if (rol.equals("PROFESOR")) {
+                u = new Profesor(
+                    rs.getInt("id_usuario"),
+                    rs.getString("nombre"),
+                    rs.getString("email"),
+                    rs.getString("password"),
+                    rs.getTimestamp("fecha_registro").toLocalDateTime().toLocalDate()
+                );
+            } else {
+                u = new Estudiante(
+                    rs.getInt("id_usuario"),
+                    rs.getString("nombre"),
+                    rs.getString("email"),
+                    rs.getString("password"),
+                    rs.getTimestamp("fecha_registro").toLocalDateTime().toLocalDate()
+                );
+            }
+            lista.add(u);
+        }
+
+    } catch (SQLException e) {
+        System.out.println("ERROR al listar usuarios");
+        e.printStackTrace();
+    }
+
+    return lista;
+    }
+    
 }
