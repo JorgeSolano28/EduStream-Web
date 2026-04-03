@@ -1,9 +1,17 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package claseDAO;
 
 import java.sql.*;
 import claseConexion.Conexion;
 import java.time.LocalDate;
 
+/**
+ *
+ * @author jorge.solano
+ */
 public class InscripcionDAO {
     
     //Insertar inscripcion
@@ -54,7 +62,7 @@ public class InscripcionDAO {
     }
     
     //Actualizar inscripcion
-    public void actualizarInscripcion(int idInscripcion, int idEstudiante, int idCurso, LocalDate fechaInscripcion) {
+    /*public void actualizarInscripcion(int idInscripcion, int idEstudiante, int idCurso, LocalDate fechaInscripcion) {
         String query = "UPDATE inscripciones SET id_estudiante=?, id_curso=?, fecha_inscripcion=? WHERE id_inscripcion=?";
 
         try (Connection conn = Conexion.getConexion();
@@ -70,6 +78,40 @@ public class InscripcionDAO {
 
         } catch (SQLException e) {
             System.out.println("ERROR al actualizar inscripción.");
+            e.printStackTrace();
+        }
+    }*/
+    
+    //para actualizar el ID del estudiante en Inscripcion
+    public void actualizarIdEstudiante(int idInscripcion, int nuevoIdEstudiante) {
+        String query = "UPDATE inscripciones SET id_estudiante=? WHERE id_inscripcion=?";
+        try (Connection conn = Conexion.getConexion(); 
+                PreparedStatement ps = conn.prepareStatement(query)) {
+
+            ps.setInt(1, nuevoIdEstudiante);
+            ps.setInt(2, idInscripcion);
+            ps.executeUpdate();
+            System.out.println("ID de Estudiante actualizado correctamente");
+
+        } catch (SQLException e) {
+            System.out.println("ERROR al actualizar ID estudiante");
+            e.printStackTrace();
+        }
+    }
+    
+    //para actualizar el ID del curso en Inscripcion
+    public void actualizarIdCurso(int idInscripcion, int nuevoIdCurso) {
+        String query = "UPDATE inscripciones SET id_curso=? WHERE id_inscripcion=?";
+        try (Connection conn = Conexion.getConexion(); 
+                PreparedStatement ps = conn.prepareStatement(query)) {
+
+            ps.setInt(1, nuevoIdCurso);
+            ps.setInt(2, idInscripcion);
+            ps.executeUpdate();
+            System.out.println("ID de Curso actualizado correctamente");
+
+        } catch (SQLException e) {
+            System.out.println("ERROR al actualizar ID Curso");
             e.printStackTrace();
         }
     }
@@ -92,5 +134,94 @@ public class InscripcionDAO {
         }
     }
     
+    
+    //para buscar usuario que solo sea ESTUDIANTE
+    public void buscarEstudiante() {
+        String query = "SELECT * FROM usuarios WHERE rol = 'ESTUDIANTE'";
+
+        try (Connection conn = Conexion.getConexion(); 
+                PreparedStatement ps = conn.prepareStatement(query); 
+                ResultSet rs = ps.executeQuery()){
+
+            while (rs.next()) {
+                int id = rs.getInt("id_usuario");
+                String nombre = rs.getString("nombre");
+                String email = rs.getString("email");
+                String rol = rs.getString("rol");
+
+                System.out.println("Id de Usuario: " + id);
+                System.out.println("Nombre: " + nombre);
+                System.out.println("Email: " + email);
+                System.out.println("Rol: " + rol);
+                System.out.println();
+            }
+
+        } catch (SQLException e) {
+            System.out.println("ERROR al leer usuarios");
+            e.printStackTrace();
+        }
+    }
+    
+    
+    //para buscar curso y nos muestre toda su informacion
+    public void buscarCurso() {
+        String query = "SELECT * FROM cursos";
+
+        try (Connection conn = Conexion.getConexion();
+             PreparedStatement ps = conn.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                int idCurso = rs.getInt("id_curso");
+                String nombreCurso = rs.getString("nombre_curso");
+                String descripcion = rs.getString("descripcion");
+                int idProfesor = rs.getInt("id_profesor");
+
+                System.out.println("ID Curso: " + idCurso);
+                System.out.println("Nombre: " + nombreCurso);
+                System.out.println("Descripción: " + descripcion);
+                System.out.println("ID Profesor: " + idProfesor);
+                System.out.println();
+            }
+
+        } catch (SQLException e) {
+            System.out.println("ERROR al leer cursos");
+            e.printStackTrace();
+        }
+    }
+    
+    //para buscar curso pero por ID para la inscripcion 
+    public boolean buscarCurso(int id) {
+        String query = "SELECT id_curso, nombre_curso, descripcion, id_profesor FROM cursos WHERE id_curso=?";
+
+        try (Connection conn = Conexion.getConexion(); 
+                PreparedStatement ps = conn.prepareStatement(query)){ 
+
+            ps.setInt(1, id); 
+            ResultSet rs = ps.executeQuery(); 
+
+            if (rs.next()) {
+                int idCurso = rs.getInt("id_curso");
+                String nombreCurso = rs.getString("nombre_curso");
+                String descripcion = rs.getString("descripcion");
+                int idProfesor = rs.getInt("id_profesor");
+
+                System.out.println();
+                System.out.println("ID Curso: " + idCurso);
+                System.out.println("Nombre: " + nombreCurso);
+                System.out.println("Descripción: " + descripcion);
+                System.out.println("ID Profesor: " + idProfesor);
+                System.out.println();
+                
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR al buscar curso por ese ID");
+            e.printStackTrace();
+            return false;
+        }
+    }
     
 }
