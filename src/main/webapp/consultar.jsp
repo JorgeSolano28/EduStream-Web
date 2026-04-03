@@ -7,19 +7,59 @@
     <meta charset="UTF-8">
     <title>EduStream - Consultar Usuarios</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #f0f0f0; padding: 30px; }
-        .card { background: white; padding: 30px; border-radius: 12px; }
-        h2 { color: #333; }
-        .filtros { margin-bottom: 20px; }
-        .btn { display: inline-block; padding: 8px 16px; margin: 4px; border-radius: 6px; text-decoration: none; color: white; font-size: 14px; }
-        .btn-todos      { background: #2196F3; }
-        .btn-estudiante { background: #4CAF50; }
-        .btn-profesor   { background: #9C27B0; }
-        .btn-volver     { background: #9E9E9E; }
-        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
-        th { background: #2196F3; color: white; }
-        tr:nth-child(even) { background: #f2f2f2; }
+        body { font-family: Arial; 
+               background: #212529; 
+               padding: 30px; }
+        
+        .card { background: #343a40; 
+               padding: 30px; 
+               border-radius: 12px; }
+        
+        h2 { 
+            color: white; 
+            text-align: center;}
+        
+        .filtros { 
+            margin-bottom: 20px; 
+            color: white; }
+        
+        .btn { 
+            display: inline-block; 
+            padding: 8px 16px; 
+            margin: 4px; 
+            border-radius: 6px; 
+            text-decoration: none; 
+            color: white; 
+            font-size: 14px; }
+        
+        .btn-todos      { 
+            background: #1864ab; }
+        
+        .btn-estudiante { 
+            background: #fab005; }
+        
+        .btn-profesor   { 
+            background: #087f5b; }
+        
+        .btn-volver     { 
+            background: #d9480f; }
+        
+        table { border-collapse: collapse; 
+                width: 100%; 
+                margin-top: 20px; }
+        
+        th, td { border: 1px solid #868e96;
+                 background: #495057;
+                 padding: 10px;
+                 color: white;
+                 text-align: left; }
+        
+        th { background: #40c057;
+             text-align: center;
+             color: white; }
+        
+        tr:nth-child(even) { 
+            background: #f2f2f2; }
     </style>
 </head>
 <body>
@@ -64,7 +104,7 @@
         </table>
 
         <br/>
-        <a href="usuarios" class="btn btn-volver">Volver al Menú</a>
+        <a href="usuarios" class="btn btn-volver">Volver al Menú principal</a>
     </div>
 </body>
 </html>

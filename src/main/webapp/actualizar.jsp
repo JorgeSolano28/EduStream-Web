@@ -6,16 +6,49 @@
     <meta charset="UTF-8">
     <title>EduStream - Actualizar Usuario</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #f0f0f0; padding: 30px; }
-        .card { background: white; padding: 30px; border-radius: 12px; max-width: 500px; margin: auto; }
-        h2, h3 { color: #333; }
-        label { display: block; margin-top: 12px; font-weight: bold; }
-        input, select { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
-        .btn { display: inline-block; padding: 10px 20px; margin-top: 10px; border: none; border-radius: 6px; cursor: pointer; color: white; font-size: 14px; text-decoration: none; }
-        .btn-buscar    { background: #2196F3; }
-        .btn-guardar   { background: #FF9800; }
-        .btn-volver    { background: #9E9E9E; }
-        .seccion { border: 1px solid #ddd; border-radius: 8px; padding: 16px; margin-top: 16px; }
+        body { font-family: Arial, sans-serif; 
+               background: #f0f0f0; padding: 30px; }
+        
+        .card { background: white; padding: 30px; 
+                border-radius: 12px; 
+                max-width: 500px; 
+                margin: auto; }
+        
+        h2, h3 { 
+            color: #333; }
+        
+        label { display: block; 
+                margin-top: 12px; 
+                font-weight: bold; }
+        
+        input, select { width: 100%; 
+                        padding: 8px; 
+                        margin-top: 4px; 
+                        box-sizing: border-box; 
+                        border: 1px solid #ccc; 
+                        border-radius: 4px; }
+        
+        .btn { display: inline-block; 
+              padding: 10px 20px; 
+              margin-top: 10px; 
+              border: none; 
+              border-radius: 6px; 
+              cursor: pointer; 
+              color: white; 
+              font-size: 14px; 
+              text-decoration: none; }
+        
+        .btn-buscar { background: #2196F3; }
+        
+        .btn-guardar { background: #FF9800; }
+        
+        .btn-volver { background: #9E9E9E; }
+        
+        .seccion { border: 1px solid #ddd; 
+                  border-radius: 8px;
+                  padding: 16px; 
+                  margin-top: 16px; }
+        
         hr { margin: 20px 0; }
     </style>
 </head>
