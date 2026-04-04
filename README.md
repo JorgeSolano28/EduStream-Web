@@ -1,5 +1,5 @@
 ## EduStream-Web
-- Proyecto Final - Programación 2 | Universidad Técnica de Costa Rica
+- Proyecto Final - Programación 2 | Universidad Tecnológica Costarricense (UTC)
 
 ## Requisitos previos
 
