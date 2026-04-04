@@ -63,7 +63,6 @@
 
 
 <%-- Parte del cuerpo del jsp a mostrar al usuario final--%>
-
 <body>
     <div class="menu">
         <h1>EduStream</h1>
@@ -72,6 +71,8 @@
         <a href="usuarios?accion=consultar"  class="btn btn-consultar">Consultar Usuarios</a>
         <a href="usuarios?accion=actualizar" class="btn btn-actualizar">Actualizar Usuario</a>
         <a href="usuarios?accion=eliminar"   class="btn btn-eliminar" >Eliminar Usuario</a>
+        
+        <a href="logout" class="btn" style="background: #607D8B; margin-top: 20px;"> Cerrar Sesión </a>
         
         <hr style="margin: 24px 0; border: none; border-top: 1px solid #ddd;"/>
 
