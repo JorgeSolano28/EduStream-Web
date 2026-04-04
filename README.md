@@ -1,4 +1,4 @@
-## EduStream-Web - 100% del Proyecto Final
+## EduStream-Web
 - Proyecto Final - Programación 2 | Universidad Técnica de Costa Rica
 
 ## Requisitos previos
