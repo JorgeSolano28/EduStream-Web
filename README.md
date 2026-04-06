@@ -135,13 +135,9 @@ Esto hace que se agreguen los correos a la lista de correos de usuarios permitid
 - Usuario
 
 ## Serverlets
-
-### serverlet
 - FiltroSeguridad
 - SvLogout
 - SvUsuario
-
-## Serverlets
 
 ## JSP
 - actualizar
