@@ -10,7 +10,7 @@ Antes de correr el proyecto asegúrate de tener instalado lo siguiente:
 - MySQL (motor de base de datos) — [Descargar aquí](https://dev.mysql.com/downloads/mysql/)
 - MySQL Workbench (gestor de base de datos) — [Descargar aquí](https://dev.mysql.com/downloads/workbench/)
 - NetBeans 24 o superior con soporte Maven — [Descargar aquí](https://netbeans.apache.org/download/)
-- Driver de conexión a MySQL — En este caso es obligatorio, sin embargo, las dependencias del archivo pom.xlm fueron modificadas para que cualquiera que descargue el programa y lo corra se le descargue de forma automática sin necesidad de hacerlo de forma manual como archivo externo
+- Driver de conexión a MySQL — En este caso es obligatorio, sin embargo, las dependencias del archivo pom.xlm fueron modificadas para que cualquiera que descargue el programa y lo corra se le descargue de forma automática sin necesidad de hacerlo de forma manual como archivo externo tal y como se observa en el siguiente fragmento de código extraido del pom.xml
 ```xml
 <dependency>
     <groupId>mysql</groupId>
