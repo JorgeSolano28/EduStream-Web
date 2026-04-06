@@ -120,19 +120,20 @@ Esto hace que se agreguen los correos a la lista de correos de usuarios permitid
 ## Clases Java
 
 ### claseConexion
-- Conexion
+- Conexion: empleada para la conexión a MySQL por medio de JDBC, a su vez todos las clases DAO la utilizan para obtener una conexión y poder interactuar con la base de datos
 
 ### claseDAO
-- CursoDAO
-- InscripcionDAO
-- UsuarioDAO
+- CursoDAO: gestiona las acciones y métodos a emplear sobre la tabla "cursos" de la base de datos, en este caso el respectivo CRUD
+- InscripcionDAO: gestiona las acciones y métodos a emplear sobre la tabla "inscrpciones" de la base de datos, en este caso el respectivo CRUD
+- UsuarioDAO: gestiona las acciones y métodos a emplear sobre la tabla "usuarios" de la base de datos, en este caso el respectivo CRUD, además de validar las credenciales permitidas para el acceso al sistema
 
 ### clasePojos
-- Estudiante
-- Inscripción
-- Profesor
-- Rol
-- Usuario
+- Curso: clase que representa una materia y a su vez su relación con un profesor que la imparte
+- Estudiante: clase que se extiende de la clase abstracta "Usuario" y representa en este caso un usuario con rol de estudiante predispuesto por la clase Rol como enum
+- Inscripción: clase que representa la relación entre un usuario estudiante y un curso
+- Profesor: clase que se extiende de la clase abstracta "Usuario" y representa en este caso un usuario con rol de profesor predispuesto por la clase Rol como enum
+- Rol: enum empleado para la definición estricta de roles. dejando solamente a elección PROFESOR y ESTUDIANTE, evitando errores de escritura o innecesarios cambios o o estandarización entre mayúsculas y minúsculas
+- Usuario: clase abstracta que define los atributos, constructores y base para las clases Estudiante y Profesor
 
 ## Serverlets
 - FiltroSeguridad
