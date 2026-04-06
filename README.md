@@ -10,9 +10,16 @@ Antes de correr el proyecto asegúrate de tener instalado lo siguiente:
 - MySQL (motor de base de datos) — [Descargar aquí](https://dev.mysql.com/downloads/mysql/)
 - MySQL Workbench (gestor de base de datos) — [Descargar aquí](https://dev.mysql.com/downloads/workbench/)
 - NetBeans 24 o superior con soporte Maven — [Descargar aquí](https://netbeans.apache.org/download/)
-- Driver de conexión a MySQL — En este es obligatorio, sin embargo, las dependencias del trabajo realizado en Java Maven fueron modificados en su archivo llamado "pom.xml" para que cualquiera que descargue el programa y lo corra se le descargue automáticamente sin necesidad de correr y configurar el driver de forma manual.
+- Driver de conexión a MySQL — En este caso es obligatorio, sin embargo, las dependencias del archivo pom.xlm fueron modificadas para que cualquiera que descargue el programa y lo corra se le descargue de forma automática sin necesidad de hacerlo de forma manual como archivo externo
+```xml
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.33</version>
+</dependency>
+```
 
-## Paso 1: Clonar el repositorio
+## Paso 1: Descargar el proyecto como documento comprimido y luego descomprimirlo
 
 Descarga directamente desde el repositorio con el botón verde "Code" ->  "Download ZIP" y extráelo.
 
