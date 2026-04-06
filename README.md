@@ -112,6 +112,9 @@ Esto hace que se agreguen los correos a la lista de correos de usuarios permitid
 </dependency>
 ```
 
+## Documentos generados automáticamente
+- Se incluye un documento .gitignore configurado para evitar subir la carpeta "target/", de forma que se evite subir al repositorio archivos temporales o información local que se pueda reconstruir como rutas y accesos, además, se parametrizó para que tampoco suba la carpeta "nbproject/private/", la cual contiene configuraciones sobre rutas y preferencias del IDE, lo cual dio algunos errores en pruebas con otros equipos 
+
 ## Autores
 
 - Jorge Solano 
