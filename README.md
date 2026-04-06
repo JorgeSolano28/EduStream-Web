@@ -6,7 +6,7 @@
 Antes de correr el proyecto asegúrate de tener instalado lo siguiente:
 
 - JDK 11 o superior — [Descargar aquí](https://www.oracle.com/java/technologies/downloads/)
-- Apache Tomcat 9 — [Descargar aquí](https://tomcat.apache.org/download-90.cgi)
+- Apache Tomcat versión 9 o inferior — [Descargar aquí](https://tomcat.apache.org/download-90.cgi)
 - MySQL (motor de base de datos) — [Descargar aquí](https://dev.mysql.com/downloads/mysql/)
 - MySQL Workbench (gestor de base de datos) — [Descargar aquí](https://dev.mysql.com/downloads/workbench/)
 - NetBeans 24 o superior con soporte Maven — [Descargar aquí](https://netbeans.apache.org/download/)
