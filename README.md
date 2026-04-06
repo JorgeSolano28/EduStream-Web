@@ -10,6 +10,7 @@ Antes de correr el proyecto asegúrate de tener instalado lo siguiente:
 - MySQL (motor de base de datos) — [Descargar aquí](https://dev.mysql.com/downloads/mysql/)
 - MySQL Workbench (gestor de base de datos) — [Descargar aquí](https://dev.mysql.com/downloads/workbench/)
 - NetBeans 24 o superior con soporte Maven — [Descargar aquí](https://netbeans.apache.org/download/)
+- Driver de conexión a MySQL — En este es obligatorio, sin embargo, las dependencias del trabajo realizado en Java Maven fueron modificados en su archivo llamado "pom.xml" para que cualquiera que descargue el programa y lo corra se le descargue automáticamente sin necesidad de correr y configurar el driver de forma manual.
 
 ## Paso 1: Clonar el repositorio
 
@@ -75,6 +76,10 @@ Esto hace que se agreguen los correos a la lista de correos de usuarios permitid
 5. Para eliminar un correo de la lista de usuarios autorizados, solamente comenta la línea o eliminali del código.
 
 - Importante: el usuario debe estar si o si ya registrado en la base de datos sino este dará error
+
+## Modificaciones técnicas en el proyecto
+1. Modificación directa al archivo pom.xml debido a que Jakarta es incompatible con tomcat 9 y el problema era recurrente con respecto a errores de compilación
+2. Driver de conexión a MySQL de forma automática — Se modificó el archivo pom.xml y se agregó el driver para que se descargue de forma automática en su apartado de dependencias para que cualquiera que descargue el programa y lo corra se le descargue automáticamente sin necesidad de tener que descargarlo como archivo adicional
 
 ## Autores
 
