@@ -115,6 +115,45 @@ Esto hace que se agreguen los correos a la lista de correos de usuarios permitid
 ## Documentos generados automáticamente
 - Se incluye un documento .gitignore configurado para evitar subir la carpeta "target/", de forma que se evite subir al repositorio archivos temporales o información local que se pueda reconstruir como rutas y accesos, además, se parametrizó para que tampoco suba la carpeta "nbproject/private/", la cual contiene configuraciones sobre rutas y preferencias del IDE, lo cual dio algunos errores en pruebas con otros equipos 
 
+## Contenido del proyecto
+
+## Clases Java
+
+### claseConexion
+- Conexion
+
+### claseDAO
+- CursoDAO
+- InscripcionDAO
+- UsuarioDAO
+
+### clasePojos
+- Estudiante
+- Inscripción
+- Profesor
+- Rol
+- Usuario
+
+## Serverlets
+
+### serverlet
+- FiltroSeguridad
+- SvLogout
+- SvUsuario
+
+## Serverlets
+
+## JSP
+- actualizar
+- consultar
+- eliminar
+- insertar
+- loginmenu
+- usuario
+
+## Documentos HTML
+- index
+
 ## Autores
 
 - Jorge Solano 
