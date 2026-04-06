@@ -133,14 +133,14 @@ Esto hace que se agreguen los correos a la lista de correos de usuarios permitid
 - Inscripción: clase que representa la relación entre un usuario estudiante y un curso
 - Profesor: clase que se extiende de la clase abstracta "Usuario" y representa en este caso un usuario con rol de profesor predispuesto por la clase Rol como enum
 - Rol: enum empleado para la definición estricta de roles. dejando solamente a elección PROFESOR y ESTUDIANTE, evitando errores de escritura o innecesarios cambios o o estandarización entre mayúsculas y minúsculas
-- Usuario: clase abstracta que define los atributos, constructores y base para las clases Estudiante y Profesor
+- Usuario: clase abstracta que define los getters, setters y constructores para las clases Estudiante y Profesor
 
 ## Serverlets
-- FiltroSeguridad
-- SvLogout
-- SvUsuario
+- FiltroSeguridad: no es un serverlet como tal, es un filtro que verifica todas las peticiones y valida que un usuario que ingrese al sitio tenga una sesión activa por así decirlo y en caso de que este no cuente con ella, lo redirige a la página de inicio de sesión 
+- SvLogout: 
+- SvUsuario: 
 
-## JSP
+## JSP (vistas finales para el usuario)
 - actualizar
 - consultar
 - eliminar
