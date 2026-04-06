@@ -78,8 +78,32 @@ Esto hace que se agreguen los correos a la lista de correos de usuarios permitid
 - Importante: el usuario debe estar si o si ya registrado en la base de datos sino este dará error
 
 ## Modificaciones técnicas en el proyecto
-1. Modificación directa al archivo pom.xml debido a que Jakarta es incompatible con tomcat 9 y el problema era recurrente con respecto a errores de compilación
-2. Driver de conexión a MySQL de forma automática — Se modificó el archivo pom.xml y se agregó el driver para que se descargue de forma automática en su apartado de dependencias para que cualquiera que descargue el programa y lo corra se le descargue automáticamente sin necesidad de tener que descargarlo como archivo adicional
+1. Modificación directa al archivo pom.xml debido a que Jakarta es incompatible con tomcat 9 y el problema era recurrente con respecto a errores de compilación. Esto se puede visualizar en las siguientes líneas de ejemplo tanto de antes como después de su modificación
+- Antes de su modificación
+```xml
+<dependency>
+    <groupId>jakarta.platform</groupId>
+    <artifactId>jakarta.jakartaee-api</artifactId>
+</dependency>
+```
+- Luego de su modificación
+```xml
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>4.0.1</version>
+    <scope>provided</scope>
+</dependency>
+```
+ 
+2. Driver de conexión a MySQL de forma automática — Se modificó el archivo pom.xml y se agregó el driver para que se descargue de forma automática en su apartado de dependencias para que cualquiera que descargue el programa y lo corra se le descargue automáticamente sin necesidad de tener que descargarlo como archivo adicional tal y como se puede visualizar en el siguiente ejemplo
+```xml
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.33</version>
+</dependency>
+```
 
 ## Autores
 
