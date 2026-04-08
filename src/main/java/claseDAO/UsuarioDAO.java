@@ -260,8 +260,8 @@ public class UsuarioDAO {
     //==============================================================================
     
     public List<Usuario> listarUsuarios() {
-    List<Usuario> lista = new ArrayList<>();
-    String query = "SELECT * FROM usuarios";
+        List<Usuario> lista = new ArrayList<>();
+        String query = "SELECT * FROM usuarios";
 
     try (Connection conn = Conexion.getConexion();
          PreparedStatement ps = conn.prepareStatement(query);

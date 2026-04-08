@@ -60,6 +60,8 @@ public class SvUsuario extends HttpServlet {
                 break;
 
             case "eliminar":
+                List<Usuario> eliminar = dao.listarUsuarios();
+                request.setAttribute("usuarios", eliminar);
                 request.getRequestDispatcher("/eliminar.jsp").forward(request, response);
                 break;
 

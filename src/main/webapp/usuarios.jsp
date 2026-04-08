@@ -59,14 +59,16 @@
             List<Usuario> usuarios = (List<Usuario>) request.getAttribute("usuarios");
             if (usuarios != null && !usuarios.isEmpty()) {
                 for (Usuario u : usuarios) {
+                    if (u.getId() != 3){
         %>
-            <tr>
+        <tr>
                 <td><%= u.getId() %></td>
                 <td><%= u.getNombre() %></td>
                 <td><%= u.getEmail() %></td>
                 <td><%= u.getRol() %></td>
-            </tr>
+        </tr>
         <%
+                    }
                 }
             } else {
         %>

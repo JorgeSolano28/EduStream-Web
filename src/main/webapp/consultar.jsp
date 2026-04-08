@@ -11,7 +11,11 @@
     <style>
         body { font-family: Arial; 
                background: #212529; 
-               padding: 30px; }
+               padding: 30px;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+        }
         
         .card { background: #343a40; 
                padding: 30px; 
@@ -23,7 +27,11 @@
         
         .filtros { 
             margin-bottom: 20px; 
-            color: white; }
+            color: white; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         
         .btn { 
             display: inline-block; 
@@ -35,7 +43,8 @@
             font-size: 14px; }
         
         .btn-todos      { 
-            background: #1864ab; }
+            background: #1864ab; 
+        }
         
         .btn-estudiante { 
             background: #fab005; }
@@ -79,7 +88,7 @@
 
         <table>
             <tr>
-                <th>ID</th>
+                <%--<th>ID</th>--%>
                 <th>Nombre</th>
                 <th>Email</th>
                 <th>Rol</th>
@@ -88,14 +97,16 @@
                 List<Usuario> usuarios = (List<Usuario>) request.getAttribute("usuarios");
                 if (usuarios != null && !usuarios.isEmpty()) {
                     for (Usuario u : usuarios) {
+                        if (u.getId() != 3){
             %>
                 <tr>
-                    <td><%= u.getId() %></td>
+                    <%-- <td><%= u.getId() %></td> --%>
                     <td><%= u.getNombre() %></td>
                     <td><%= u.getEmail() %></td>
                     <td><%= u.getRol() %></td>
                 </tr>
             <%
+                        }
                     }
                 } else {
             %>
