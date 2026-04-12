@@ -19,13 +19,6 @@ public class SvLogin extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        /*HttpSession session = request.getSession(false);
-
-        if (session != null && session.getAttribute("usuarioLogueado") != null) {
-            response.sendRedirect("usuarios");
-            return;
-        }*/
-
         request.getRequestDispatcher("/login.jsp").forward(request, response);
     }
 
@@ -41,9 +34,9 @@ public class SvLogin extends HttpServlet {
 
         if (user) {
             List<String> permitidos = new ArrayList<>();
-            permitidos.add("soporte@utc.ac.cr");
+            permitidos.add("soporte1@utc.ac.cr");
+            permitidos.add("soporte2@utc.ac.cr");
 
-            /*if (permitidos.contains(user.getEmail())) {*/
             HttpSession session = request.getSession();
             session.setAttribute("usuarioLogueado", user);
             response.sendRedirect("usuarios");
@@ -52,12 +45,5 @@ public class SvLogin extends HttpServlet {
             request.setAttribute("error", "Email o contraseña incorrectos");
             request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
-        
-        /*if(user = false){
-                request.setAttribute("error", "No tienes permiso para acceder al sistema");
-                request.getRequestDispatcher("/login.jsp").forward (request, response);
-            
-        }*/
-        
     }
 }

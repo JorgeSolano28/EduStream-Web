@@ -25,12 +25,11 @@
             border-radius: 12px;
         }
         
-        h2 { 
-            color: white; 
-            text-align: center; }        
+        h2 {
+            color: white;
+            text-align: center;
+        }        
         
-        <%--h3 { 
-        color: white; }--%>
         strong{
             color: white;
         }
@@ -99,13 +98,17 @@
             margin-top: 20px;
         }
         
-        .seccion { border: 1px solid #ddd;
-                  color: white;
-                  border-radius: 8px;
-                  padding: 16px; 
-                  margin-top: 16px; }
+        .action {
+            border: 1px solid #ddd;
+            color: white;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 16px;
+        }
         
-        hr { margin: 20px 0; }
+        hr {
+            margin: 20px 0;
+        }
     </style>
 </head>
 
@@ -113,21 +116,6 @@
 <body>
     <div class="card">
         <h2>Actualizar Usuario</h2>
-
-        <%-- Paso 1: Buscar usuario por ID --%>
-        <%--<form action="usuarios" method="GET">
-            <input type="hidden" name="accion" value="actualizar"/>
-            <label>ID del usuario a actualizar:</label>
-            <input type="number" name="id" placeholder="Digite el ID del usuario a modificar" required/>
-            <button type="submit" class="btn btn-buscar">Buscar</button>
-        </form>
-
-        <%
-            Usuario u = (Usuario) request.getAttribute("usuario");
-            if (u != null) {
-        %>
-            <hr/>
-            <h3>Actualizando Informacion de: <%= u.getNombre() %></h3>--%>
 
             <table>
                 <tr>
@@ -140,7 +128,7 @@
                     List<Usuario> usuarios = (List<Usuario>) request.getAttribute("usuarios");
                     if (usuarios != null && !usuarios.isEmpty()) {
                         for (Usuario u : usuarios) {
-                            if (u.getId() != 3){
+                            if ((u.getId() != 3) && (u.getId() != 4)){
                 %>
                                 <tr>
                                     <td><%= u.getNombre() %></td>
@@ -167,29 +155,8 @@
                 %>
             </table>
             
-            <%-- Actualización general de un usuario (los 4 campos) --%>
-            <%--<div class="section">
-                <strong>Actualización general</strong>
-                <form action="usuarios" method="POST">
-                    <input type="hidden" name="accion" value="actualizarGeneral"/>
-                    <input type="hidden" name="id" value="<%= u.getId() %>"/>
-                    <label>Nombre:</label>
-                    <input type="text" name="nombre" value="<%= u.getNombre() %>" required/>
-                    <label>Email:</label>
-                    <input type="email" name="email" value="<%= u.getEmail() %>" required/>
-                    <label>Password:</label>
-                    <input type="password" name="password" required/>
-                    <label>Rol:</label>
-                    <select name="rol">
-                        <option value="ESTUDIANTE" <%= u.getRol().name().equals("ESTUDIANTE") ? "selected" : "" %>>ESTUDIANTE</option>
-                        <option value="PROFESOR"   <%= u.getRol().name().equals("PROFESOR")   ? "selected" : "" %>>PROFESOR</option>
-                    </select>
-                    <button type="submit" class="btn btn-guardar">Actualizar Todo</button>
-                </form>
-            </div>
-
+ 
             <%-- Secciones para actualización individual según lo que se requiera--%>
-            
             <%
                 Usuario act = (Usuario) request.getAttribute("usuario");
                 if (act != null) {
@@ -197,7 +164,7 @@
                     <%-- Actualización de nombre de usuario--%>
                     <br/>
                     <br/>
-                    <div class="actNombre">
+                    <div class="action">
                         <strong>Actualizar Nombre</strong>
                         <form action="usuarios" method="POST">
                             <input type="hidden" name="accion" value="actualizarNombre"/>
@@ -209,7 +176,7 @@
 
                     <%-- Actualización de email de usuario--%>  
                     <br/>
-                    <div class="actEmail">
+                    <div class="action">
                         <strong>Actualizar Email</strong>
                         <form action="usuarios" method="POST">
                             <input type="hidden" name="accion" value="actualizarEmail"/>
@@ -221,7 +188,7 @@
 
                     <%-- Actualización de contraseña de usuario--%>        
                     <br/>
-                    <div class="actContra">
+                    <div class="action">
                         <strong>Actualizar Password</strong>
                         <form action="usuarios" method="POST">
                             <input type="hidden" name="accion" value="actualizarPassword"/>
@@ -233,7 +200,7 @@
 
                     <%-- Actualización de rol de usuario--%>                    
                     <br/>
-                    <div class="actRol">
+                    <div class="action">
                         <strong>Actualizar Rol</strong>
                         <form action="usuarios" method="POST">
                             <input type="hidden" name="accion" value="actualizarRol"/>
@@ -248,15 +215,6 @@
             <% 
                 }
             %>
-                
-        <%-- Manejo de error para cuando se ingrese un id inexistente--%>                    
-        <%--<%
-            } else if (request.getParameter("id") != null) {
-        %>
-            <p style="color:red">No se encontró ningún usuario con ese ID.</p>
-        <%
-            }
-        %>--%>
 
         <br/>
         <a href="menu.jsp" class="btn btn-volver">Volver al Menú principal</a>

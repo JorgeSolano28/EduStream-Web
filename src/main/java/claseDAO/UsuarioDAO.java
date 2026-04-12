@@ -1,4 +1,3 @@
-
 package claseDAO;
 import java.sql.*;
 import claseConexion.Conexion;
@@ -21,7 +20,7 @@ public class UsuarioDAO {
             ps.setString(1, nombre);
             ps.setString(2, email);
             ps.setString(3, password);
-            ps.setString(4, rol.name()); // "ESTUDIANTE" o "PROFESOR"*************
+            ps.setString(4, rol.name()); // "ESTUDIANTE" o "PROFESOR"
 
             ps.executeUpdate();
             System.out.println("Nuevo usuario insertado correctamente");
@@ -255,9 +254,9 @@ public class UsuarioDAO {
     }
     
     
-    //==============================================================================
-    //Métdos para la parte web directamente
-    //==============================================================================
+    //=================================================
+    //      Métdos para la parte web directamente       
+    //=================================================
     
     public List<Usuario> listarUsuarios() {
         List<Usuario> lista = new ArrayList<>();
@@ -299,7 +298,7 @@ public class UsuarioDAO {
     return lista;
     }
     
-    
+     /**___________________________________________________________________________________________*/
     public List<Usuario> listarPorRol(String rol) {
     List<Usuario> lista = new ArrayList<>();
     String query = "SELECT * FROM usuarios WHERE rol = ?";
@@ -339,6 +338,7 @@ public class UsuarioDAO {
     return lista;
 }
 
+     /**___________________________________________________________________________________________*/
     public Usuario buscarUsuarioPorId(int id) {
         String query = "SELECT * FROM usuarios WHERE id_usuario = ?";
 
@@ -376,47 +376,7 @@ public class UsuarioDAO {
         return null;
     }
     
-    /*public Usuario validarLogin(String email, String password) {
-    String query = "SELECT * FROM usuarios WHERE email = ? AND password = ?";
-
-        try (Connection conn = Conexion.getConexion();
-             PreparedStatement ps = conn.prepareStatement(query)) {
-
-            ps.setString(1, email);
-            ps.setString(2, password);
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                String rol = rs.getString("rol");
-
-                if (rol.equals("PROFESOR")) {
-                    return new Profesor(
-                        rs.getInt("id_usuario"),
-                        rs.getString("nombre"),
-                        rs.getString("email"),
-                        rs.getString("password"),
-                        rs.getTimestamp("fecha_registro").toLocalDateTime().toLocalDate()
-                    );
-                } else {
-                    return new Estudiante(
-                        rs.getInt("id_usuario"),
-                        rs.getString("nombre"),
-                        rs.getString("email"),
-                        rs.getString("password"),
-                        rs.getTimestamp("fecha_registro").toLocalDateTime().toLocalDate()
-                    );
-                }
-            }
-
-        } catch (SQLException e) {
-            System.out.println("ERROR al validar login");
-            e.printStackTrace();
-        }
-
-        return null;
-    }*/
-
-    
+    /**___________________________________________________________________________________________*/
     public boolean validarLogin(String email, String password){
         String query = "SELECT email, password FROM usuarios WHERE email = ? AND password = ?";
         
@@ -431,7 +391,7 @@ public class UsuarioDAO {
                 String emailOk = rs.getString("email");
                 String passOk = rs.getString("password");
                 
-                if(emailOk.equals("soporte@utc.ac.cr") && passOk.equals("admin")){
+                if((emailOk.equals("soporte1@utc.ac.cr") && passOk.equals("admin")) || (emailOk.equals("soporte2@utc.ac.cr") && passOk.equals("admin"))){
                     return true;
                 }
             }
@@ -443,7 +403,4 @@ public class UsuarioDAO {
         return false;
         }
     }
-
-
-    
 }

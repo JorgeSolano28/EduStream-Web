@@ -72,7 +72,7 @@
 <body>
     <div class="card">
         <h1>EduStream</h1>
-        <p>Ingresa tus credenciales de administrador para inresar al sistema</p>
+        <p>Ingresa tus credenciales de administrador para ingresar al sistema</p>
 
         <% if (request.getAttribute("error") != null) { %>
             <div class="error"><%= request.getAttribute("error") %></div>

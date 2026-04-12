@@ -2,9 +2,7 @@ package clasePOJOS;
 import java.time.LocalDate;
 
 
-//cambio de nombre a singular según buenas prácticas******************************
 public class Inscripcion {
-    //atributos descriptivos para evitar redundancia o problemas de legibilidad******************************
     private int idInscripcion;
     private int idEstudiante;
     private int idCurso;

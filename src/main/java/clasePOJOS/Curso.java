@@ -1,14 +1,12 @@
 package clasePOJOS;
 
 public class Curso {
-    //Cambio de atributos más descriptivos
-    //y se puede evitar redundancia, más legible************************************
+
     private int idCurso;
     private String nombreCurso;
     private String descripcion;
     private int idProfesor;
     
-    //Cambio de constructores actualizados************************************
     public Curso(int idCurso, String nombreCurso, String descripcion, int idProfesor) {
         this.idCurso = idCurso;
         this.nombreCurso = nombreCurso;
@@ -16,7 +14,6 @@ public class Curso {
         this.idProfesor = idProfesor;
     }
 
-    //Cambio de getters y setters actualizados************************************
     public int getIdCurso() {
         return idCurso;
     }

@@ -74,7 +74,7 @@ public class SvUsuario extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        throws ServletException, IOException {
 
         String accion = request.getParameter("accion");
         UsuarioDAO dao = new UsuarioDAO();
@@ -87,26 +87,13 @@ public class SvUsuario extends HttpServlet {
                 String password = request.getParameter("password");
                 Rol rol = Rol.valueOf(request.getParameter("rol"));
                 dao.insertarUsuario(nombre, email, password, rol);
-                request.getRequestDispatcher("/menu.jsp").forward(request, response);
-                //response.sendRedirect("usuarios?accion=consultar");
+                response.sendRedirect("usuarios?accion=consultar");
                 break;
-
-            /*case "actualizarGeneral":
-                int idGen = Integer.parseInt(request.getParameter("id"));
-                String nomGen = request.getParameter("nombre");
-                String emailGen = request.getParameter("email");
-                String passGen = request.getParameter("password");
-                String rolGen = request.getParameter("rol");
-                dao.actualizarUsuario(idGen, nomGen, emailGen, passGen, rolGen);
-                request.getRequestDispatcher("/menu.jsp").forward(request, response);
-                //response.sendRedirect("usuarios?accion=consultar");
-                break;*/
 
             case "actualizarNombre":
                 int idNom = Integer.parseInt(request.getParameter("id"));
                 dao.actualizarNombre(idNom, request.getParameter("nombre"));
-                request.getRequestDispatcher("/menu.jsp").forward(request, response);
-                //response.sendRedirect("usuarios?accion=consultar");
+                response.sendRedirect("usuarios?accion=consultar");
                 break;
 
             case "actualizarEmail":

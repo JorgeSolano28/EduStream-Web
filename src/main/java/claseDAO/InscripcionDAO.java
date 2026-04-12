@@ -1,17 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package claseDAO;
 
 import java.sql.*;
 import claseConexion.Conexion;
 import java.time.LocalDate;
 
-/**
- *
- * @author jorge.solano
- */
+
 public class InscripcionDAO {
     
     //Insertar inscripcion
@@ -61,26 +54,6 @@ public class InscripcionDAO {
         }
     }
     
-    //Actualizar inscripcion
-    /*public void actualizarInscripcion(int idInscripcion, int idEstudiante, int idCurso, LocalDate fechaInscripcion) {
-        String query = "UPDATE inscripciones SET id_estudiante=?, id_curso=?, fecha_inscripcion=? WHERE id_inscripcion=?";
-
-        try (Connection conn = Conexion.getConexion();
-             PreparedStatement ps = conn.prepareStatement(query)) {
-
-            ps.setInt(1, idEstudiante);
-            ps.setInt(2, idCurso);
-            ps.setDate(3, Date.valueOf(fechaInscripcion)); // Convierte LocalDate a java.sql.Date
-            ps.setInt(4, idInscripcion);
-
-            ps.executeUpdate();
-            System.out.println("Inscripción actualizada correctamente.");
-
-        } catch (SQLException e) {
-            System.out.println("ERROR al actualizar inscripción.");
-            e.printStackTrace();
-        }
-    }*/
     
     //para actualizar el ID del estudiante en Inscripcion
     public void actualizarIdEstudiante(int idInscripcion, int nuevoIdEstudiante) {
