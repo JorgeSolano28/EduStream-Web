@@ -19,12 +19,12 @@ public class SvLogin extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        HttpSession session = request.getSession(false);
+        /*HttpSession session = request.getSession(false);
 
         if (session != null && session.getAttribute("usuarioLogueado") != null) {
             response.sendRedirect("usuarios");
             return;
-        }
+        }*/
 
         request.getRequestDispatcher("/login.jsp").forward(request, response);
     }
@@ -37,27 +37,27 @@ public class SvLogin extends HttpServlet {
         String password = request.getParameter("password");
 
         UsuarioDAO dao = new UsuarioDAO();
-        Usuario user = dao.validarLogin(email, password);
+        boolean user = dao.validarLogin(email, password);
 
-        if (user != null) {
-
+        if (user) {
             List<String> permitidos = new ArrayList<>();
             permitidos.add("soporte@utc.ac.cr");
 
-            if (permitidos.contains(user.getEmail())) {
-                HttpSession session = request.getSession();
-                session.setAttribute("usuarioLogueado", user);
-                response.sendRedirect("usuarios");
-            } else {
-                request.setAttribute("error", "No tienes permiso para acceder al sistema");
-                request.getRequestDispatcher("/login.jsp").forward(request, response);
-            }
-
-        } else {
+            /*if (permitidos.contains(user.getEmail())) {*/
+            HttpSession session = request.getSession();
+            session.setAttribute("usuarioLogueado", user);
+            response.sendRedirect("usuarios");
+            
+        }else {
             request.setAttribute("error", "Email o contraseña incorrectos");
             request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
         
+        /*if(user = false){
+                request.setAttribute("error", "No tienes permiso para acceder al sistema");
+                request.getRequestDispatcher("/login.jsp").forward (request, response);
+            
+        }*/
         
     }
 }

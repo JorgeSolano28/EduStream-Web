@@ -56,6 +56,8 @@ public class SvUsuario extends HttpServlet {
                     Usuario u = dao.buscarUsuarioPorId(Integer.parseInt(idStr));
                     request.setAttribute("usuario", u);
                 }
+                List<Usuario> actualizar = dao.listarUsuarios();
+                request.setAttribute("usuarios", actualizar);
                 request.getRequestDispatcher("/actualizar.jsp").forward(request, response);
                 break;
 
@@ -85,23 +87,26 @@ public class SvUsuario extends HttpServlet {
                 String password = request.getParameter("password");
                 Rol rol = Rol.valueOf(request.getParameter("rol"));
                 dao.insertarUsuario(nombre, email, password, rol);
-                response.sendRedirect("usuarios?accion=consultar");
+                request.getRequestDispatcher("/menu.jsp").forward(request, response);
+                //response.sendRedirect("usuarios?accion=consultar");
                 break;
 
-            case "actualizarGeneral":
+            /*case "actualizarGeneral":
                 int idGen = Integer.parseInt(request.getParameter("id"));
                 String nomGen = request.getParameter("nombre");
                 String emailGen = request.getParameter("email");
                 String passGen = request.getParameter("password");
                 String rolGen = request.getParameter("rol");
                 dao.actualizarUsuario(idGen, nomGen, emailGen, passGen, rolGen);
-                response.sendRedirect("usuarios?accion=consultar");
-                break;
+                request.getRequestDispatcher("/menu.jsp").forward(request, response);
+                //response.sendRedirect("usuarios?accion=consultar");
+                break;*/
 
             case "actualizarNombre":
                 int idNom = Integer.parseInt(request.getParameter("id"));
                 dao.actualizarNombre(idNom, request.getParameter("nombre"));
-                response.sendRedirect("usuarios?accion=consultar");
+                request.getRequestDispatcher("/menu.jsp").forward(request, response);
+                //response.sendRedirect("usuarios?accion=consultar");
                 break;
 
             case "actualizarEmail":

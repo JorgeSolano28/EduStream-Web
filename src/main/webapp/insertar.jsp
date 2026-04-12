@@ -82,7 +82,7 @@
 
             <br/>
             <button type="submit" class="btn btn-guardar">Guardar nuevo usuario</button>
-            <a href="usuarios" class="btn btn-volver">Volver al Menú principal</a>
+            <a href="menu.jsp" class="btn btn-volver">Volver al Menú principal</a>
         </form>
     </div>
 </body>

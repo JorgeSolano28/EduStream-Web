@@ -1,4 +1,4 @@
-package serverlet;
+/*package serverlet;
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -51,4 +51,4 @@ public class FiltroSeguridad implements Filter {
 
     @Override
     public void destroy() {}
-}
+}*/

@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%--<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 <%@page import="clasePOJOS.Usuario"%>
 <!DOCTYPE html>
@@ -20,10 +20,10 @@
 </head>
 <body>
 
-    <h2>GestiÃ³n de Usuarios</h2>
+    <h2>Gestión de Usuarios</h2>
 
     <%-- FORMULARIO para insertar usuarios a la bd--%>
-    <form action="usuarios" method="POST">
+    <%--<form action="usuarios" method="POST">
         <h3>Nuevo Usuario</h3>
 
         <label>Nombre:</label>
@@ -33,7 +33,7 @@
         <input type="email" name="email" placeholder="Digite el email" required />
 
         <label>Password:</label>
-        <input type="password" name="password" placeholder="Digite la contraseÃ±a" required />
+        <input type="password" name="password" placeholder="Digite la contraseña" required />
 
         <label>Rol:</label>
         <select name="rol">
@@ -46,7 +46,7 @@
     </form>
 
     <%-- Tabla para mostrar usuarios existentes en la bd y confirmar su registro--%>
-    <h2>Usuarios Registrados</h2>
+    <%--<h2>Usuarios Registrados</h2>
     <table>
         <tr>
             <th>ID</th>
@@ -77,8 +77,8 @@
             </tr>
         <%
             }
-        %>
-    </table>
+        %>--
+</table>--%>
 
-</body>
-</html>
+    <%--</body>
+</html>--%>

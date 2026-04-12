@@ -140,24 +140,24 @@
                 List<Usuario> usuarios = (List<Usuario>) request.getAttribute("usuarios");
                 if (usuarios != null && !usuarios.isEmpty()) {
                     for (Usuario u : usuarios) {
-                        if (u.getId() != 3){
+                        //if (u.getId() != 3){
             %>
-            <tr>
-                <td><%= u.getNombre() %></td>
-                <td><%= u.getEmail() %></td>
-                <td><%= u.getRol() %></td>
-                <td>
-                    <form action="usuarios" method="POST">
-                        <input type="hidden" name="accion" value="eliminar"/>
-                        <input type="hidden" name="id" value="<%= u.getId()%>"/>
-                        <button type="submit" class="btn btn-eliminar" onclick=" return confirm('¿Estás seguro de que deseas eliminar este usuario: <%= u.getNombre()%>')">
-                            Eliminar
-                        </button>
-                    </form>
-                </td>
-            </tr>
+                            <tr>
+                                <td><%= u.getNombre() %></td>
+                                <td><%= u.getEmail() %></td>
+                                <td><%= u.getRol() %></td>
+                                <td>
+                                    <form action="usuarios" method="POST">
+                                        <input type="hidden" name="accion" value="eliminar"/>
+                                        <input type="hidden" name="id" value="<%= u.getId()%>"/>
+                                        <button type="submit" class="btn btn-eliminar" onclick=" return confirm('¿Estás seguro de que deseas eliminar este usuario: <%= u.getNombre()%>')">
+                                            Eliminar
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
             <%
-                        }
+                        //}
                     }
                 } else {
             %>
@@ -170,7 +170,7 @@
         </table>
         
         <br/>
-        <a href="usuarios" class="btn btn-volver">Volver al Menú principal</a>
+        <a href="menu.jsp" class="btn btn-volver">Volver al Menú principal</a>
     </div>
 </body>
 </html>

@@ -132,7 +132,7 @@ public class UsuarioDAO {
    public void actualizarRol(int id, Rol nuevoRol) {
         String query = "UPDATE usuarios SET rol=? WHERE id_usuario=?";
         try (Connection conn = Conexion.getConexion(); 
-                PreparedStatement ps = conn.prepareStatement(query)) {
+            PreparedStatement ps = conn.prepareStatement(query)) {
 
             ps.setString(1, nuevoRol.name());
             ps.setInt(2, id);
@@ -151,7 +151,7 @@ public class UsuarioDAO {
         String query = "DELETE FROM usuarios WHERE id_usuario=?";
 
         try (Connection conn = Conexion.getConexion();
-             PreparedStatement ps = conn.prepareStatement(query)) {
+            PreparedStatement ps = conn.prepareStatement(query)) {
 
             ps.setInt(1, id);
 
@@ -169,7 +169,7 @@ public class UsuarioDAO {
         String query = "SELECT id_usuario, nombre, email, rol FROM usuarios WHERE id_usuario=?";
 
         try (Connection conn = Conexion.getConexion(); 
-                PreparedStatement ps = conn.prepareStatement(query)){ 
+            PreparedStatement ps = conn.prepareStatement(query)){ 
 
             ps.setInt(1, id); 
             ResultSet rs = ps.executeQuery(); 
@@ -204,8 +204,8 @@ public class UsuarioDAO {
         String query = "SELECT * FROM usuarios WHERE rol = 'ESTUDIANTE'";
 
         try (Connection conn = Conexion.getConexion(); 
-                PreparedStatement ps = conn.prepareStatement(query); 
-                ResultSet rs = ps.executeQuery()){
+            PreparedStatement ps = conn.prepareStatement(query); 
+            ResultSet rs = ps.executeQuery()){
 
             while (rs.next()) {
                 int id = rs.getInt("id_usuario");
@@ -232,8 +232,8 @@ public class UsuarioDAO {
         String query = "SELECT * FROM usuarios WHERE rol = 'PROFESOR'";
 
         try (Connection conn = Conexion.getConexion(); 
-                PreparedStatement ps = conn.prepareStatement(query); 
-                ResultSet rs = ps.executeQuery()){
+            PreparedStatement ps = conn.prepareStatement(query); 
+            ResultSet rs = ps.executeQuery()){
 
             while (rs.next()) {
                 int id = rs.getInt("id_usuario");
@@ -305,7 +305,7 @@ public class UsuarioDAO {
     String query = "SELECT * FROM usuarios WHERE rol = ?";
 
     try (Connection conn = Conexion.getConexion();
-         PreparedStatement ps = conn.prepareStatement(query)) {
+        PreparedStatement ps = conn.prepareStatement(query)) {
 
         ps.setString(1, rol);
         ResultSet rs = ps.executeQuery();
@@ -343,7 +343,7 @@ public class UsuarioDAO {
         String query = "SELECT * FROM usuarios WHERE id_usuario = ?";
 
         try (Connection conn = Conexion.getConexion();
-             PreparedStatement ps = conn.prepareStatement(query)) {
+            PreparedStatement ps = conn.prepareStatement(query)) {
 
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -376,37 +376,37 @@ public class UsuarioDAO {
         return null;
     }
     
-    public Usuario validarLogin(String email, String password) {
+    /*public Usuario validarLogin(String email, String password) {
     String query = "SELECT * FROM usuarios WHERE email = ? AND password = ?";
 
-    try (Connection conn = Conexion.getConexion();
-         PreparedStatement ps = conn.prepareStatement(query)) {
+        try (Connection conn = Conexion.getConexion();
+             PreparedStatement ps = conn.prepareStatement(query)) {
 
-        ps.setString(1, email);
-        ps.setString(2, password);
-        ResultSet rs = ps.executeQuery();
+            ps.setString(1, email);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
 
-        if (rs.next()) {
-            String rol = rs.getString("rol");
+            if (rs.next()) {
+                String rol = rs.getString("rol");
 
-            if (rol.equals("PROFESOR")) {
-                return new Profesor(
-                    rs.getInt("id_usuario"),
-                    rs.getString("nombre"),
-                    rs.getString("email"),
-                    rs.getString("password"),
-                    rs.getTimestamp("fecha_registro").toLocalDateTime().toLocalDate()
-                );
-            } else {
-                return new Estudiante(
-                    rs.getInt("id_usuario"),
-                    rs.getString("nombre"),
-                    rs.getString("email"),
-                    rs.getString("password"),
-                    rs.getTimestamp("fecha_registro").toLocalDateTime().toLocalDate()
-                );
+                if (rol.equals("PROFESOR")) {
+                    return new Profesor(
+                        rs.getInt("id_usuario"),
+                        rs.getString("nombre"),
+                        rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getTimestamp("fecha_registro").toLocalDateTime().toLocalDate()
+                    );
+                } else {
+                    return new Estudiante(
+                        rs.getInt("id_usuario"),
+                        rs.getString("nombre"),
+                        rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getTimestamp("fecha_registro").toLocalDateTime().toLocalDate()
+                    );
+                }
             }
-        }
 
         } catch (SQLException e) {
             System.out.println("ERROR al validar login");
@@ -414,8 +414,35 @@ public class UsuarioDAO {
         }
 
         return null;
-}
+    }*/
 
+    
+    public boolean validarLogin(String email, String password){
+        String query = "SELECT email, password FROM usuarios WHERE email = ? AND password = ?";
+        
+        try (Connection conn = Conexion.getConexion(); 
+            PreparedStatement ps = conn.prepareStatement(query)){ 
+
+            ps.setString(1, email);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                String emailOk = rs.getString("email");
+                String passOk = rs.getString("password");
+                
+                if(emailOk.equals("soporte@utc.ac.cr") && passOk.equals("admin")){
+                    return true;
+                }
+            }
+            return false;
+            
+        }catch (SQLException e){
+            System.out.println("ERROR al tratar de ingresar al sistema");
+        e.printStackTrace();
+        return false;
+        }
+    }
 
 
     
