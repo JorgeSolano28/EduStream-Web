@@ -37,8 +37,8 @@ FOREIGN KEY (id_curso) REFERENCES cursos(id_curso) ON DELETE CASCADE
 INSERT INTO usuarios (nombre, email, password, rol) VALUES
 ('Admin Profesor', 'profe@edustream.com', '123456', 'PROFESOR'),
 ('Juan Estudiante', 'juan@correo.com', '123456', 'ESTUDIANTE'),
-('ADMIN', 'soporte@utc.ac.cr', 'admin', 'PROFESOR'),
-('ADMIN', 'soporte@utc.ac.cr', 'admin', 'PROFESOR');
+('ADMIN', 'soporte1@utc.ac.cr', 'admin', 'PROFESOR'),
+('ADMIN', 'soporte2@utc.ac.cr', 'admin', 'PROFESOR');
 
 -- cursos de prueba
 INSERT INTO cursos (nombre_curso, descripcion, id_profesor) VALUES
