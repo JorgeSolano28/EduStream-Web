@@ -83,7 +83,6 @@ Descarga directamente desde el repositorio con el botón verde "Code" ->  "Downl
 - insertar
 - login
 - menu
-- usuario
 
 ## Documentos HTML
 - index
@@ -92,7 +91,3 @@ Descarga directamente desde el repositorio con el botón verde "Code" ->  "Downl
 
 - Jorge Solano 
 - Luis Abarca
-
-
-
-
