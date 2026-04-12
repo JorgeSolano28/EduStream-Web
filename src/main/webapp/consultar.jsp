@@ -117,7 +117,7 @@
         </table>
 
         <br/>
-        <a href="usuarios" class="btn btn-volver">Volver al Menú principal</a>
+        <a href="menu.jsp" class="btn btn-volver">Volver al Menú principal</a>
     </div>
 </body>
 </html>
