@@ -39,7 +39,7 @@ public class SvLogin extends HttpServlet {
 
             HttpSession session = request.getSession();
             session.setAttribute("usuarioLogueado", user);
-            response.sendRedirect("menu.jsp");
+            response.sendRedirect("usuarios");
             
         }else {
             request.setAttribute("error", "Email o contraseña incorrectos");
