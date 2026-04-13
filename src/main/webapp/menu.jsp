@@ -27,8 +27,9 @@
             color: white; 
             margin-bottom: 30px; }
         
-        h3 { 
-            color: white; }
+        h3,p {
+            color: white;
+        }
         
         .btn { 
             display: block; 
@@ -66,8 +67,16 @@
 <body>
     <div class="menu">
         <h1>EduStream</h1>
+        <%
+            String usuarioLogueado = (String) session.getAttribute("usuarioLogueado");
+            if (usuarioLogueado != null) {
+        %>
+                <p>Bienvenido <%= usuarioLogueado%></p>
+        <%
+            }
+        %>
         <h3>Gestión de Usuarios (CRUD completo)</h3>
-        <a href="usuarios?accion=insertar"   class="btn btn-insertar" >Insertar Usuario</a>
+        <a href="usuarios?accion=insertar"   class="btn btn-insertar">Insertar Usuario</a>
         <a href="usuarios?accion=consultar"  class="btn btn-consultar">Consultar Usuarios</a>
         <a href="usuarios?accion=actualizar" class="btn btn-actualizar">Actualizar Usuario</a>
         <a href="usuarios?accion=eliminar"   class="btn btn-eliminar" >Eliminar Usuario</a>

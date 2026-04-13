@@ -35,7 +35,7 @@ public class SvLogin extends HttpServlet {
         if (user) {
 
             HttpSession session = request.getSession();
-            session.setAttribute("usuarioLogueado", user);
+            session.setAttribute("usuarioLogueado", email);
             response.sendRedirect("usuarios");
             
         }else {
