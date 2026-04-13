@@ -26,19 +26,19 @@ Descarga directamente desde el repositorio con el botón verde "Code" ->  "Downl
 5. Ejecuta el script completo presionando el rayo (execute)
 6. Verifica que se creó la base de datos "edustream_db" con sus respectivas tablas "inscripciones", "usuarios" y "cursos"
 
-## Paso 3: Configurar la contraseña de MySQL
-
-1. Abre el archivo llamado "Conexion.java" la cual se encuentra en la ruta de la carpeta del proyecto "src/main/java/claseConexion/Conexion.java"
-2. Luego busca la siguiente linea y cambia el "1234" por la respectiva contraseña de tu usuario root
-- private static final String PASS = "1234";
-
-## Paso 4: Abrir el proyecto en NetBeans
+## Paso 3: Abrir el proyecto en NetBeans
 
 1. Abre NetBeans
 2. Ve a la parte superior izquierda y sigue la ruta "File -> Open Project
 3. Luego ve a la carpeta donde descomprimiste el archivo .zip del proyecto descargado del repositorio
 4. Marca la carpeta "EduStreamWeb" y haz clic en Open Project
 5. Espera que Maven descargue las dependencias automáticamente (requiere internet la primera vez debido a que debe buscar y descargar las dependencias)
+
+## Paso 4: Configurar la contraseña de MySQL
+
+1. Abre el archivo llamado "Conexion.java" la cual se encuentra en la ruta de la carpeta del proyecto "src/main/java/claseConexion/Conexion.java"
+2. Luego busca la siguiente linea y cambia el "1234" por la respectiva contraseña de tu usuario root
+- private static final String PASS = "1234";
 
 ## Paso 5: Configurar para que arranque con servidor Tomcat
 
