@@ -33,9 +33,6 @@ public class SvLogin extends HttpServlet {
         boolean user = dao.validarLogin(email, password);
 
         if (user) {
-            List<String> permitidos = new ArrayList<>();
-            permitidos.add("soporte1@utc.ac.cr");
-            permitidos.add("soporte2@utc.ac.cr");
 
             HttpSession session = request.getSession();
             session.setAttribute("usuarioLogueado", user);
